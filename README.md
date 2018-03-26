@@ -2,9 +2,19 @@
 
 ## CertificateGenerator
 
-Original by awesome [Tomáš Pilař](https://www.tomaspilar.cz/), thanks a lot!
+### How to use?
 
-- @todo how to use
-- @todo xls use case?
-- @todo figure out Travis automated usage 
-- @todo final - send all PDFs to mail(s) 1 day before lecture :)
+- Open Google Sheets, where:
+    - 1st column = name of the lecture
+    - 2nd column = date
+    - 3rd column = name of the user
+- File -> Download As -> CSV
+- Run 
+    ```bash
+    bin/generate-certificate path-to-downloaded-file.csv
+    ```
+- All certificates will be generated to `/output` directory
+
+### Thanks
+
+Original by awesome [Tomáš Pilař](https://www.tomaspilar.cz/), thanks a lot!

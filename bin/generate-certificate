@@ -5,6 +5,8 @@ use Pehapkari\Lecture\CertificateGenerator;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+
+
 $certificateGenerator = new CertificateGenerator(__DIR__ . '/../output');
 
 // pass cli list
