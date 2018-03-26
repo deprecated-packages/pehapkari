@@ -1,0 +1,15 @@
+<?php declare(strict_types=1);
+
+use Pehapkari\CertificateGenerator;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+
+$certificateGenerator = new CertificateGenerator(__DIR__ . '/../output');
+
+// pass cli list
+$certificateGenerator->generateForTrainingNameDateAndName(
+    'Training',
+    '28. 2. 2018',
+    'Tomas'
+);
