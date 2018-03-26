@@ -8,6 +8,9 @@
     - 1st column = name of the lecture
     - 2nd column = date
     - 3rd column = name of the user
+    
+    ![Certificates Table](/docs/certificates-table.png)
+    
 - File -> Download As -> CSV
 - Run 
     ```bash
