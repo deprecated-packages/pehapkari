@@ -8,6 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+// for simple start: http://symfony.com/doc/current/components/console/single_command_tool.html
 $application = new \Symfony\Component\Console\Application();
 $application->register('generate-certificates')
     ->addArgument('csv-file', InputArgument::REQUIRED, 'Path to .csv file with structured data - lecture name | date | user name')
