@@ -1,9 +1,0 @@
-application:
-	errorPresenter: Error
-	mapping:
-		*: App\*Module\Presenters\*Presenter
-
-services:
-	router: App\RouterFactory::createRouter
-	- App\Forms\FormFactory
-	- App\Forms\CertificateGeneratorFormFactory

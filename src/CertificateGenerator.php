@@ -6,6 +6,9 @@ use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;
 use setasign\Fpdi\Fpdi;
 
+/**
+ * @author Tomáš Pilař <https://www.tomaspilar.cz/>
+ */
 final class CertificateGenerator
 {
     /**
@@ -22,7 +25,7 @@ final class CertificateGenerator
         define('FPDF_FONTPATH', __DIR__ . '/../files/fonts');
     }
 
-    public function generateForTrainingNameDateAndName(string $lectureName, string $date, string $name): void
+    public function generateForTrainingNameDateAndName(string $trainingName, string $date, string $userName): void
     {
         $pdf = new Fpdi('l', 'pt');
         $pdf->AddPage('l');
@@ -36,13 +39,13 @@ final class CertificateGenerator
 
         $width = (int) $pdf->GetPageWidth();
 
-        $this->addUserName($name, $pdf, $width);
+        $this->addUserName($userName, $pdf, $width);
         $this->addDate($date, $pdf, $width);
-        $this->addTrainingName($lectureName, $pdf, $width);
+        $this->addTrainingName($trainingName, $pdf, $width);
 
         $pdf->Output(
             'F', // F = "file"
-            $this->createDestinationForLecturNameAndUserName($lectureName, $name)
+            $this->createDestinationForLectureNameAndUserName($trainingName, $userName)
         );
     }
 
@@ -73,13 +76,9 @@ final class CertificateGenerator
         $pdf->Write(0, $name);
     }
 
-    /**
-     * @param string $trainingName
-     * @param string $name
-     * @return string
-     */
-    private function createDestinationForLecturNameAndUserName(string $trainingName, string $name): string
+    private function createDestinationForLectureNameAndUserName(string $trainingName, string $userName): string
     {
-        return $this->outputDirectory . DIRECTORY_SEPARATOR . sprintf('%s-%s.pdf', Strings::webalize($trainingName), Strings::webalize($name));
+        return $this->outputDirectory . DIRECTORY_SEPARATOR .
+            sprintf('%s-%s.pdf', Strings::webalize($trainingName), Strings::webalize($userName));
     }
 }
