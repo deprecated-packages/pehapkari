@@ -1,7 +1,3 @@
-log/*
-temp/*
-vendor/*
-!.gitignore
-!.htaccess
-!web.config
+/output
+/vendor
 composer.lock

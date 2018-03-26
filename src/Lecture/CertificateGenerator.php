@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Pehapkari;
+namespace Pehapkari\Lecture;
 
 use Nette\Utils\FileSystem;
 use Nette\Utils\Strings;

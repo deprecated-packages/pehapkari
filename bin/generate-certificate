@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
-use Pehapkari\CertificateGenerator;
+use Pehapkari\Lecture\CertificateGenerator;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-
 
 $certificateGenerator = new CertificateGenerator(__DIR__ . '/../output');
 

@@ -1,13 +1,15 @@
 {
-	"name": "pehapkari/pehapkari",
-	"description": "Certificate pdf generator",
-	"require": {
-		"php": "^7.1",
-		"nette/utils": "^2.5",
-		"setasign/fpdf": "^1.8",
-		"setasign/fpdi": "^2.0"
-	},
-	"autoload": {
-		"Pehapkari\\": ["src"]
-	}
+    "name": "pehapkari/pehapkari",
+    "description": "Pehapkari ecosystem tools",
+    "require": {
+        "php": "^7.1",
+        "nette/utils": "^2.5",
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pehapkari\\Lecture\\": "src/Lecture"
+        }
+    }
 }
