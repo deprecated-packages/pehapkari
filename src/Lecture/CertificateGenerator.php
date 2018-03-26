@@ -22,7 +22,7 @@ final class CertificateGenerator
         FileSystem::createDir($this->outputDirectory);
 
         // required for Fpdi?
-        define('FPDF_FONTPATH', __DIR__ . '/../files/fonts');
+        define('FPDF_FONTPATH', __DIR__ . '/../../files/fonts');
     }
 
     public function generateForTrainingNameDateAndName(string $trainingName, string $date, string $userName): void
@@ -33,7 +33,7 @@ final class CertificateGenerator
         $pdf->AddFont('DejaVuSans','','DejaVuSans.php');
         $pdf->AddFont('Georgia','','Georgia.php');
 
-        $pdf->setSourceFile(__DIR__ . '/../files/certificate.pdf');
+        $pdf->setSourceFile(__DIR__ . '/../../files/certificate.pdf');
         $tppl = $pdf->importPage(1);
         $pdf->useTemplate($tppl, 25, 0);
 

@@ -2,16 +2,35 @@
 <?php declare(strict_types=1);
 
 use Pehapkari\Lecture\CertificateGenerator;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$application = new \Symfony\Component\Console\Application();
+$application->register('generate-certificates')
+    ->addArgument('csv-file', InputArgument::REQUIRED, 'Path to .csv file with structured data - lecture name | date | user name')
+    ->setCode(function(InputInterface $input, OutputInterface $output) {
+        $csvFile = $input->getFirstArgument();
 
+        // make output path smart to the path where the file was provided in
+        $ouputDirectory = dirname($csvFile);
 
-$certificateGenerator = new CertificateGenerator(__DIR__ . '/../output');
+        $certificateGenerator = new CertificateGenerator($ouputDirectory);
 
-// pass cli list
-$certificateGenerator->generateForTrainingNameDateAndName(
-    'Training',
-    '28. 2. 2018',
-    'Tomas'
-);
+        $data = array_map('str_getcsv', file($csvFile));
+
+        foreach ($data as $item) {
+            $certificateGenerator->generateForTrainingNameDateAndName(
+                (string) $item[0],
+                (string) $item[1],
+                (string) $item[2]
+            );
+
+            $output->writeln(sprintf('Generated for "%s"', $item[2]));
+        }
+    })
+    ->getApplication()
+    ->setDefaultCommand('generate-certificates', true)
+    ->run();
