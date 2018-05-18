@@ -52,7 +52,11 @@ final class CertificateGenerator
     private function addTrainingName(string $trainingName, Fpdi $pdf, int $width): void
     {
         $trainingName = iconv('UTF-8', 'windows-1250', $trainingName);
-        $pdf->SetFont('DejaVuSans', '', 23);
+
+        // resize for long lecture names
+        $fontSize = (strlen($trainingName) < 40) ? 23 : 18;
+
+        $pdf->SetFont('DejaVuSans', '', $fontSize);
         $pdf->SetTextColor(0, 0, 0);
         $pdf->SetXY(($width / 2) - ($pdf->GetStringWidth($trainingName) / 2), 350);
         $pdf->Write(0, $trainingName);
