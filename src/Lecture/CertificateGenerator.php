@@ -54,7 +54,8 @@ final class CertificateGenerator
         $trainingName = iconv('UTF-8', 'windows-1250', $trainingName);
 
         // resize for long lecture names
-        $fontSize = (strlen($trainingName) < 40) ? 23 : 18;
+        $fontSize = (strlen($trainingName) < 40) ? 23 :
+            ((strlen($trainingName) < 45) ? 21 : 18);
 
         $pdf->SetFont('DejaVuSans', '', $fontSize);
         $pdf->SetTextColor(0, 0, 0);
